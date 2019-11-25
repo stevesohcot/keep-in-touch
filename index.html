@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Keep In Touch</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+        
+            body {
+                padding-bottom: 20px;
+            }
+
+            #btnAddContact {
+                font-size: 200%;
+            }
+
+            #btnAddIndv, #btnCancelIndv {
+                font-size: 150%;
+            }
+
+            .display_friend_name {font-size:x-large;}
+
+            #EmptyListInstructions {font-size:125%;}
+
+            #initial_instructions .glyphicon.glyphicon-arrow-down {
+			    font-size: 75px;
+			}
+
+        </style>
+       
+
+    </head>
+    <body>
+   
+    <div class="jumbotron">
+      <div class="container">
+        <h2>Keep In Touch</h2>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div id="NotifyContact" class="alert alert-success" style="display:none;">
+        <div>Contact <span id="notification_type">Added</span></div>
+      </div>
+
+		<h4 id="headerMyList">My List</h4>
+
+      <div id="tblContainer" class="table-responsive">
+
+        <table class="table table-striped" id="tblFriendList">
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div id="EmptyListInstructions" class="alert alert-info">
+
+        <div>Tap the <strong>Add Contact</strong> button below<br />&nbsp;</div>
+        <div align="center" id="initial_instructions"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
+
+      </div>
+
+      <div id="EditItemInstructions" class="alert text-center">
+       To edit: tap a name above
+      </div>
+
+      <!-- Modal for Adding Item -->
+      <div class="modal" id="modal_ItemAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAddContact">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="ModalAddContact">Add Contact</h4>
+            </div>
+            <div class="modal-body">
+             
+              <form onSubmit="return false;">
+                <input type="text" name="txtItemAdd" id="txtItemAdd" class="form-control" autocomplete="off" />
+              </form>
+
+            </div>
+            <div class="modal-footer">          
+              <button type="button" class="btn btn-success btn-lg" id="btnAddIndv" onClick="AddItem();">Add</button>
+              <button type="button" class="btn btn-default btn-lg" id="btnCancelIndv" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal for Edit Item -->
+      <div class="modal" id="modal_ItemEdit" tabindex="-1" role="dialog" aria-labelledby="ModalEditContact">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="ModalEditContact">Edit Contact</h4>
+            </div>
+            <div class="modal-body">
+             
+               <form onSubmit="return false;">
+                <input type="text" name="txtItemEdit" id="txtItemEdit" class="form-control" autocomplete="off" />
+                <input type="hidden" name="txtItemEdit_Orig" id="txtItemEdit_Orig" />
+              </form>
+
+            </div>
+
+            <ul class="list-group">            
+              <a class="list-group-item" onClick="ChangeItem('SaveChanges');" ><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save without Repositioning</a>
+              <a class="list-group-item" onClick="ChangeItem('MoveToTop');" ><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Move to Top of List</a>
+              <a class="list-group-item" onClick="ChangeItem('MoveToBottom');"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> Move to Bottom of List</a>
+              <a class="list-group-item" onClick="ChangeItem('Delete');"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</a>
+              <a class="list-group-item" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Cancel</a>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div> <!-- /.container -->        
+
+
+    <nav class="navbar-inverse navbar-fixed-bottom">
+      <div class="container text-center">        
+          <a href="" class="btn btn-primary btn-lg" id="btnAddContact" data-toggle="modal" data-target="#modal_ItemAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Contact</a>
+      </div>
+    </nav>
+
+        <script src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
