@@ -4,6 +4,7 @@
 
 This is a JavaScript app, run in a web browser but originally in a mobile app "shell."
 
+There's no external database; everything is stored in the browser's Local Storage.
 
 ### Original description when in the app store:
 
